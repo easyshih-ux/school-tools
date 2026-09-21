@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbwcHwFkSb239BVfykNQ9Am9EGHj9NNymbCNtUaXR_Pz2_BdIguJFkyOhLEQV0NgOHUZAA/exec">
   <title>義學 LINE 查詢</title>
 
   <!-- PWA & Mobile Home Screen Metadata -->
@@ -20,115 +21,48 @@
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      height: 100vh;
-      height: 100dvh;
-      overflow: hidden;
-      background-color: #ffffff;
+      padding: 2rem;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-
-    #appContainer {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      height: 100vh;
-      height: 100dvh;
-      overflow: hidden;
-    }
-
-    #gasFrame {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-      z-index: 1;
-    }
-
-    /* Minimal lightweight loading indicator */
-    #loadingOverlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      background-color: #ffffff;
+      color: #334155;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background-color: #ffffff;
-      z-index: 2;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
-
-    #loadingOverlay.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .spinner {
-      width: 38px;
-      height: 38px;
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
       border: 3px solid rgba(2, 119, 60, 0.15);
       border-top-color: #02773c;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
-      margin-bottom: 14px;
+      margin-bottom: 1rem;
     }
-
-    .loading-text {
-      color: #64748b;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
+    .msg {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
     }
-
+    .fallback-link {
+      font-size: 0.85rem;
+      color: #02773c;
+      text-decoration: none;
+    }
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
-  <div id="appContainer">
-    <!-- Minimal Loading Overlay -->
-    <div id="loadingOverlay">
-      <div class="spinner"></div>
-      <div class="loading-text">載入義學 LINE 查詢中...</div>
-    </div>
-
-    <!-- Google Apps Script Full-screen iframe -->
-    <iframe
-      id="gasFrame"
-      src="https://script.google.com/macros/s/AKfycbwcHwFkSb239BVfykNQ9Am9EGHj9NNymbCNtUaXR_Pz2_BdIguJFkyOhLEQV0NgOHUZAA/exec"
-      allow="clipboard-read; clipboard-write; fullscreen"
-      onload="hideLoading()"
-    ></iframe>
-  </div>
-
-  <script>
-    function hideLoading() {
-      var loader = document.getElementById('loadingOverlay');
-      if (loader) {
-        loader.classList.add('hidden');
-        setTimeout(function() {
-          loader.style.display = 'none';
-        }, 350);
-      }
-    }
-
-    // Safety fallback: if iframe onload doesn't fire within 6 seconds, hide overlay
-    setTimeout(hideLoading, 6000);
-  </script>
+  <div class="loading-spinner"></div>
+  <div class="msg">正在前往義學 LINE 查詢系統...</div>
+  <a class="fallback-link" href="https://script.google.com/macros/s/AKfycbwcHwFkSb239BVfykNQ9Am9EGHj9NNymbCNtUaXR_Pz2_BdIguJFkyOhLEQV0NgOHUZAA/exec">若未自動跳轉，請點此前往</a>
 </body>
 </html>
