@@ -1,0 +1,45 @@
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Spreadsheets and data exports
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.xlsm
+*.xlsb
+*.ods
+
+# Temporary and log files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+~$*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+
+# Dependency and build output
+node_modules/
+dist/
+build/
+coverage/
+
+# Firebase local-only configuration and emulator state
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+functions/.secret.local
+functions/.env
+functions/.env.*
+!functions/.env.example
