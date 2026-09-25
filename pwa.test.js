@@ -164,7 +164,7 @@ describe("Gate 5 service worker safety", () => {
 
   test("production cache 使用 school-tools 專用 namespace", () => {
     assert.match(worker, /CACHE_NAMESPACE = "school-tools-shell-"/);
-    assert.match(worker, /CACHE_VERSION = .*CACHE_NAMESPACE.*v2/);
+    assert.match(worker, /CACHE_VERSION = .*CACHE_NAMESPACE.*v3/);
     assert.match(worker, /key\.startsWith\(CACHE_NAMESPACE\) && key !== CACHE_VERSION/);
   });
 
@@ -179,6 +179,7 @@ describe("Gate 5 service worker safety", () => {
         keys: async () => [
           "school-tools-shell-v0",
           "school-tools-shell-v1",
+          "school-tools-shell-v2",
           "school-tools-v2-shell-v3",
           "parent-day-map",
           "another-project-cache"
@@ -196,7 +197,7 @@ describe("Gate 5 service worker safety", () => {
     vm.runInNewContext(worker, context);
     activateHandler({ waitUntil: (promise) => { pending = promise; } });
     await pending;
-    assert.deepEqual(deleted, ["school-tools-shell-v0", "school-tools-shell-v1"]);
+    assert.deepEqual(deleted, ["school-tools-shell-v0", "school-tools-shell-v1", "school-tools-shell-v2"]);
   });
 
   test("API、跨 origin、非 GET request 完全 bypass", () => {
